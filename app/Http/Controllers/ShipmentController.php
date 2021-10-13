@@ -74,7 +74,7 @@ class ShipmentController extends Controller
             $shipments->where('customer_telephone','LIKE','%'.$request->get('filter_telephone') .'%');
         }
 
-
+        $shipments->where('agent_id', Auth::id());
     
 
         $data['shipments'] = $shipments->paginate(50);
@@ -84,7 +84,10 @@ class ShipmentController extends Controller
 
     public function shipmentForm(Request $request){
         $data = array();
- 
+        
+        $data['agent_id'] = Auth::id();
+        $data['agent'] = Agent::where('id',Auth::id())->first();
+        
         try{
            /* $ip = file_get_contents('https://api.ipify.org');
             $location = Location::get($ip);*/
@@ -100,7 +103,6 @@ class ShipmentController extends Controller
         $data['currencies'] = Currency::get();
         $data['service_types'] = ServiceType::get();
         $data['payment_methods'] = PaymentMethod::get();
-     // dd(Countries::where('cca2', 'LB')->first()->hydrateStates()->states);
 
         $data['countries'] = $countries->all()->toArray();
 
@@ -128,7 +130,7 @@ class ShipmentController extends Controller
                 $shipment_data = [
                     'tracking_number'           =>  $traking_number,
                     'reference'                 =>  $request->input('reference'),
-                    'agent_id'                  =>  $request->input('agent_id'),
+                    'agent_id'                  =>  Auth::id(),
                     'status_id'                 =>  $status_id ,
                     'currency_id'               =>  $request->input('currency_id'),
                     'service_type_id'           =>  $request->input('service_type_id'),
@@ -188,7 +190,7 @@ class ShipmentController extends Controller
     
             case 'GET':
                 if ($request->has('id')) {
-                    $shipment = Shipment::where('id',$request->id)->first();
+                    $shipment = Shipment::where('id',$request->id)->where('agent_id',Auth::id())->first();
 
                     $data['shipment'] = $shipment;
                 }

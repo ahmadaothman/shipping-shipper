@@ -182,8 +182,8 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label >Agent :</label>
-                                    <input type="text" id="agent_autocomplete" class="form-control shipment-info" required placeholder="Search for agent..." value="{{ isset($shipment->Agent->name) ? $shipment->Agent->name :  old('agent_name') }}" autocomplete="off">
-                                    <input type="hidden" name="agent_id" value="{{ isset($shipment->agent_id) ? $shipment->agent_id :  old('agent_id') }}" />
+                                    <input readonly type="text" id="agent_autocomplete" class="form-control shipment-info" required placeholder="Search for agent..." value="{{ $agent->name }}" autocomplete="off">
+                                    <input type="hidden" name="agent_id" value="{{ isset($agent_id) ? $agent_id :  old('agent_id') }}" />
                                 </div>
                             </div>
                             <div class="col-sm-6">

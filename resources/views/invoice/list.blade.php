@@ -14,10 +14,7 @@
                         </ol>
                     </nav>
                 </div>
-                <div class="col-md-6 col-sm-12 text-right">
-                    <a  class="btn btn-primary " href="{{ route('generate_invoice') }}"><i class="icon-copy fi-plus"></i> New Invoice</a>
-
-                </div>
+                
             </div>
         </div>
         <div class="container">
@@ -58,7 +55,6 @@
                             <td>{{ $invoice->comment }}</td>
                             <td>{{ $invoice->created_at }}</td>
                             <td>
-                                <a href="{{ route('invoice',['id'=>$invoice->id]) }}"><i class="icon-copy fa fa-pencil-square-o" aria-hidden="true"> Edit</i></a>
                                 <a href="{{ route('printInvoice',['id'=>$invoice->id]) }}"><i class="icon-copy fa fa-print" aria-hidden="true"> Print</i></a>
 
                             </td>

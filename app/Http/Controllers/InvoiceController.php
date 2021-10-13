@@ -24,6 +24,7 @@ class InvoiceController extends Controller
     private function user(){
        return DB::table('users')->where('id',Auth::id())->first();
     }
+
     public function list(Request $request){
         if(!in_array($this->user()->user_type_id,$this->allowed_users)){
          
@@ -32,7 +33,7 @@ class InvoiceController extends Controller
 
         $data = array();
 
-        $invoices =  Invoice::orderBy('id');
+        $invoices =  Invoice::where('agent_id',Auth::id())->orderBy('id');
   
         
         $invoices->skip(0)->take(2);
@@ -117,7 +118,7 @@ class InvoiceController extends Controller
     public function form(Request $request){
         $data = array();
 
-        $invoice = Invoice::where('id',$request->get('id'))->first();
+        $invoice = Invoice::where('id',$request->get('id'))->where('agent_id',Auth::id())->first();
         $shipments = InvoiceShipments::where('invoice_id',$request->get('id'))->get();
         
         $data['shipments'] = $shipments;
@@ -138,7 +139,7 @@ class InvoiceController extends Controller
 
                 $invoice_id = $request->input('invoice_id');
 
-                Invoice::where('id',$invoice_id)->update(['total'=>$total,'comment'=>$request->input('comment')]);
+                Invoice::where('id',$invoice_id)->where('agent_id',Auth::id())->update(['total'=>$total,'comment'=>$request->input('comment')]);
 
                 InvoiceShipments::where('invoice_id', $invoice_id)->delete();
 
@@ -173,8 +174,10 @@ class InvoiceController extends Controller
 
     public function print(Request $request){
         $data = array();
-        $invoice = Invoice::where('id',$request->get('id'))->first();
+
+        $invoice = Invoice::where('id',$request->get('id'))->where('agent_id',Auth::id())->first();
         $shipments = InvoiceShipments::where('invoice_id',$request->get('id'))->get();
+
         $data['invoice'] = $invoice;
         $data['shipments'] = $shipments;
 
@@ -201,13 +204,13 @@ class InvoiceController extends Controller
     public function pay(Request $request){
         $data = array();
 
-        $invoice = Invoice::where('id',$request->get('id'))->first();
+        $invoice = Invoice::where('id',$request->get('id'))->where('agent_id',Auth::id())->first();
         $shipments = InvoiceShipments::where('invoice_id',$request->get('id'))->get();
 
         Invoice::where('id',$request->get('id'))->update(['status_id'=>2]);
 
         foreach($shipments as $shipment){
-            Shipment::where('id',$shipment->Shipment->id)->update(['status_id'=>21]);
+            Shipment::where('id',$shipment->Shipment->id)->where('agent_id',Auth::id())->update(['status_id'=>21]);
             DB::table('shipment_history')->insert([
                 'user_id'       =>  Auth::id(),
                 'shipment_id'   =>  $shipment->Shipment->id,
@@ -221,7 +224,7 @@ class InvoiceController extends Controller
     public function cancel(Request $request){
         $data = array();
 
-        $invoice = Invoice::where('id',$request->get('id'))->first();
+        $invoice = Invoice::where('id',$request->get('id'))->where('agent_id',Auth::id())->first();
         $shipments = InvoiceShipments::where('invoice_id',$request->get('id'))->get();
 
         Invoice::where('id',$request->get('id'))->update(['status_id'=>3]);
