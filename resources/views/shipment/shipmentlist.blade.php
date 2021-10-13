@@ -71,13 +71,7 @@
                             <small><label for="filter_agent">Agent</label></small>
 
                             <select class="form-control form-control-sm h-50 selectpicker" id="filter_agent"  multiple="multiple" data-actions-box="true" data-live-search="true">
-                                @foreach ($agents as $agent)
-                                    @if(in_array($agent->id,explode(",",app('request')->input('filter_agent'))))
-                                    <option value="{{ $agent->id }}" selected>{{ $agent->name }}</option>
-                                    @else
-                                    <option value="{{ $agent->id }}">{{ $agent->name }}</option>
-                                    @endif
-                                @endforeach
+                              
                             </select>
                         </div>
                         <div class="form-group form-group-sm col-md-2">

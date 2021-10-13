@@ -120,7 +120,7 @@ class ShipmentController extends Controller
                 
                 if($request->path() == 'shipments/add'){
                     $traking_number =  random_int(1111111111,9999999999) . (Shipment::max('id')+1);
-                    $status_id = 1;
+                    $status_id = 2;
                 }else if($request->path() == 'shipments/edit'){
                     $traking_number = $request->input('tracking_number');
                     $status_id = $request->input('status_id');
