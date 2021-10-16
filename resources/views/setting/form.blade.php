@@ -20,39 +20,11 @@
     </div>
     <form method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="row">
-            <div class="col-md-3">
-                <label>Max Weight</label>
-            </div>
-            <div class="col-md-9">
-                <input name="max_weight" type="number" class="form-control" placeholder="Max Weight" value="{{ $max_weight }}"/>
-            </div>
-            
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-3">
-                <label>Fees per extra weight</label>
-            </div>
-           
-            <div class="col-md-9">
-                <input name="fees_per_extra_weight" type="number" class="form-control" placeholder="Extra Weight Fees" value="{{ $extra_weight_fees }}"/>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-3">
-                <label>Pickup from shipper cost</label>
-            </div>
-           
-            <div class="col-md-9">
-                <input name="pickup_from_shipper_cost" type="number" class="form-control" placeholder="Pickup from shipper cost"  value="{{ $pickup_from_customer_cost }}"/>
-            </div>
-        </div>
+       
         <br>
         <div class="row">
             <div class="col-md-12 text-right">
-                <button type="submit" class="btn btn-primary">Save</button>
+               <!-- <button type="submit" class="btn btn-primary">Save</button>-->
             </div>
         </div>
     </form>
