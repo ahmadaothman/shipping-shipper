@@ -3,7 +3,7 @@
 @section('content')
 <div class="pd-ltr-20 xs-pd-20-10">
     <div class="row clearfix progress-box">
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+        <!--<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
             <div class="bg-white pd-20 box-shadow border-radius-5 height-100-p">
                 <div class="project-info clearfix">
                     <div class="project-info-left">
@@ -66,7 +66,7 @@
                 </div>
            
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 @endsection

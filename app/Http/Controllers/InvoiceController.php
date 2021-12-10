@@ -26,10 +26,7 @@ class InvoiceController extends Controller
     }
 
     public function list(Request $request){
-        if(!in_array($this->user()->user_type_id,$this->allowed_users)){
-         
-            return view('no_permission');
-        }
+       
 
         $data = array();
 
