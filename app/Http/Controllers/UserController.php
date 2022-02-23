@@ -156,7 +156,7 @@ class UserController extends Controller
         $i = 0;
         if($request->input('selected')){
             foreach($request->input('selected') as $id){
-                User::where('id', $id)->delete($id);
+         //       User::where('id', $id)->delete($id);
     
                 $i = $i +1;
             }

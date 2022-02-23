@@ -143,7 +143,7 @@ class AgentController extends Controller
         $i = 0;
         if($request->input('selected')){
             foreach($request->input('selected') as $id){
-                Agent::where('id', $id)->delete($id);
+          //      Agent::where('id', $id)->delete($id);
     
                 $i = $i +1;
             }

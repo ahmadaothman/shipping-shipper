@@ -138,7 +138,7 @@ class InvoiceController extends Controller
 
                 Invoice::where('id',$invoice_id)->where('agent_id',Auth::id())->update(['total'=>$total,'comment'=>$request->input('comment')]);
 
-                InvoiceShipments::where('invoice_id', $invoice_id)->delete();
+              //  InvoiceShipments::where('invoice_id', $invoice_id)->delete();
 
                 foreach($request->input('selected') as $id){
                     $shipment = Shipment::where('id',$id)->first();

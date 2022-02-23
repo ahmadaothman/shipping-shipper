@@ -26,7 +26,7 @@ Route::get('/agents/add', [AgentController::class, 'agentForm'])->name('addAgent
 Route::post('/agents/add', [AgentController::class, 'agentForm'])->name('addAgent');
 Route::get('/agents/edit', [AgentController::class, 'agentForm'])->name('editAgent');
 Route::post('/agents/edit', [AgentController::class, 'agentForm'])->name('editAgent');
-Route::post('/agents/remove', [AgentController::class, 'remove'])->name('removeAgents');
+//Route::post('/agents/remove', [AgentController::class, 'remove'])->name('removeAgents');
 Route::get('/agents/search', [AgentController::class, 'search'])->name('search_agent');
 // Branches
 Route::get('/branches', [BranchController::class, 'branchList'])->name('branches');
@@ -34,14 +34,14 @@ Route::get('/branches/add', [BranchController::class, 'branchForm'])->name('addB
 Route::post('/branches/add', [BranchController::class, 'branchForm'])->name('addBranch');
 Route::get('/branches/edit', [BranchController::class, 'branchForm'])->name('editBranch');
 Route::post('/branches/edit', [BranchController::class, 'branchForm'])->name('editBranch');
-Route::post('/branches/remove', [BranchController::class, 'remove'])->name('removeBranches');
+//Route::post('/branches/remove', [BranchController::class, 'remove'])->name('removeBranches');
 // Regions
 Route::get('/regions', [RegionController::class, 'list'])->name('regions');
 Route::get('/regions/add', [RegionController::class, 'form'])->name('addRegion');
 Route::post('/regions/add', [RegionController::class, 'form'])->name('addRegion');
 Route::get('/regions/edit', [RegionController::class, 'form'])->name('editRegion');
 Route::post('/regions/edit', [RegionController::class, 'form'])->name('editRegion');
-Route::post('/regions/remove', [RegionController::class, 'remove'])->name('removeRegions');
+//Route::post('/regions/remove', [RegionController::class, 'remove'])->name('removeRegions');
 // Cities
 Route::get('/cities', [CityController::class, 'list'])->name('cities');
 Route::get('/cities/add', [CityController::class, 'form'])->name('addCity');
@@ -57,14 +57,14 @@ Route::get('/users/add', [UserController::class, 'userForm'])->name('addUser');
 Route::post('/users/add', [UserController::class, 'userForm'])->name('addUser');
 Route::get('/users/edit', [UserController::class, 'userForm'])->name('editUser');
 Route::post('/users/edit', [UserController::class, 'userForm'])->name('editUser');
-Route::post('/users/remove', [UserController::class, 'remove'])->name('removeUsers');
+//Route::post('/users/remove', [UserController::class, 'remove'])->name('removeUsers');
 // Shipments
 Route::get('/shipments', [ShipmentController::class, 'listShipment'])->name('shipments');
 Route::get('/shipments/add', [ShipmentController::class, 'ShipmentForm'])->name('addShipment');
 Route::post('/shipments/add', [ShipmentController::class, 'ShipmentForm'])->name('addShipment');
 Route::get('/shipments/edit', [ShipmentController::class, 'ShipmentForm'])->name('editShipment');
 Route::post('/shipments/edit', [ShipmentController::class, 'ShipmentForm'])->name('editShipment');
-Route::post('/shipments/remove', [ShipmentController::class, 'remove'])->name('removeShipments');
+//Route::post('/shipments/remove', [ShipmentController::class, 'remove'])->name('removeShipments');
 Route::get('/shipments/states', [ShipmentController::class, 'states'])->name('shippingCountryStates');
 Route::get('/shipments/searchagents', [ShipmentController::class, 'searchAgent'])->name('shipmentSearchAgent');
 Route::post('/shipments/importexcel', [ShipmentController::class, 'importExcel'])->name('importShipmentsExcel');
