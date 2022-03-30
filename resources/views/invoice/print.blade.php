@@ -39,24 +39,34 @@
              </tr>
          @endforeach
           
-          <tr>
-            <td colspan="8" class="sub">Total Shipments (LBP)</td>
-            <td class="sub total">{{ $total_lbp }}</td>
-          </tr>
-          <tr>
-            <td colspan="8">Total Shipments (USD)</td>
-            <td class="total">{{ $total_usd }}</td>
-          </tr>
-          <tr>
-            <td colspan="8" >Due Amount</td>
-            <td class="total">{{ $due_amount }}</td>
-          </tr>
+         <tr>
+          <td colspan="8" class="sub">Total Shipments (LBP)</td>
+          <td class="sub total">{{ $total_lbp }}</td>
+        </tr>
+        <tr>
+          <td colspan="8">Total Shipments (USD)</td>
+          <td class="total">{{ $total_usd }}</td>
+        </tr>
+        <tr>
+          <td colspan="8" >Due Amount</td>
+          <td class="total">-{{ $due_amount }}</td>
+        </tr>
+        @if (!empty($extra_fees))
+        <tr>
+          <td colspan="8" >{{ $comment}}</td>
+          <td class="total">-{{ $extra_fees }}</td>
+        </tr>
+        @endif
+        <tr>
+          <td colspan="8" >Lbp Net Value</td>
+          <td class="total">{{ $net_value }}</td>
+        </tr>
         </tbody>
       </table>
     
   
     </main>
-    <footer>
+    <footer style="width:100%; text-align:center;padding:15px;">
       Invoice was created on a computer and is valid without the signature and seal.
     </footer>
   </body>

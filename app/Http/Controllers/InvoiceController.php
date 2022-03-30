@@ -191,10 +191,16 @@ class InvoiceController extends Controller
             }
             $data['due_amount'] = $data['due_amount'] + ((double)$shipment->shipping_cost + (double)$shipment->weight_fees + (double)$shipment->service_fees);
         }
+        $data['extra_fees'] = $invoice->extra_fees;
+        $data['comment'] = $invoice->comment;
+
+        $data['net_value'] = $data['total_lbp'] - ($data['due_amount']+  $data['extra_fees']);
 
         $data['total_usd'] =  '$ ' . number_format($data['total_usd'],2);
         $data['total_lbp'] =  number_format($data['total_lbp'],0) . ' L.L';
         $data['due_amount'] = number_format($data['due_amount'],0) . ' L.L';
+        $data['net_value'] = number_format($data['net_value'],0) . ' L.L';
+        $data['extra_fees'] = !empty($data['extra_fees']) ? number_format($data['extra_fees'],0) . ' L.L' : '';
         return view('invoice.print',$data);
     }
 
